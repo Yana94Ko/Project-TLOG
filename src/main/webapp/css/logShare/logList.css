@@ -89,6 +89,14 @@
 	height:100%;
 	line-height:40px;
 }
+.log_ul li:nth-child(2){
+	height:100% !important;
+	line-height:40px!important;
+	text-align:center;
+	padding:0px 30px;
+	cursor:pointer;
+	width:12vw;
+}
 .coverImg{
 	width:14vw;
 	height:12vw;
