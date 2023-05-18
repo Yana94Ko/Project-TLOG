@@ -60,7 +60,7 @@
 <!-- 로딩중 이미지 -->
 <img src='/img/loading.gif' id='loading' style='height:300px; display:none;'/>
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 
 <!-- 상세페이지 -->
 <div id='detail_div'></div>

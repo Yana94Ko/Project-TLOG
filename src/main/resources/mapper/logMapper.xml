@@ -62,7 +62,7 @@
 	</select>
 	<!-- 메인) 팔로워 많은 유저 -->
 	<select id='FollowedUser' resultType='MemberVO'>
-		SELECT 	COUNT(A.userNum) AS followerNum, A.followingNum AS userNum, 
+		SELECT 	COUNT(B.userNum) AS followerNum, A.followingNum AS userNum,
 				B.userNick, B.profileImg
         FROM 	followUser A
         JOIN 	user B
@@ -213,7 +213,6 @@
          	AND	A.isPrivate=0
         </if>
 		ORDER BY 	tNum DESC
-		LIMIT 		#{param3}, #{param4}
 	</select>
 	<!-- 태그된 일기리스트 -->
 	<select id='selectTaggedLogs' resultType='com.tworaveler.tlog.log.LogVO'>
@@ -231,7 +230,6 @@
          	WHERE	A.isPrivate=0
         </if>
 		ORDER BY 	tNum DESC
-		LIMIT 		#{param3}, #{param4}
 	</select>
 	<!-- 좋아요 누른 일기리스트 -->
 	<select id='selectLikedLogs' resultType='com.tworaveler.tlog.log.LogVO'>
@@ -248,7 +246,6 @@
         where		A.userNum!=#{param1}  <!-- 본인 글 제외 -->
         AND			A.isPrivate=0
 		ORDER BY 	tNum DESC
-		LIMIT 		#{param3}, #{param4}
 	</select>
 	<!-- =================== 날짜 검색된 일기리스트 =======================================================================-->
 	<!-- 나의 일기리스트(검색) -->
@@ -280,7 +277,6 @@
         </when>
         </choose>
 		ORDER BY 	tNum DESC
-		LIMIT 		#{param5}, #{param6}
 	</select>
 	<!-- 태그된 일기리스트 -->
 	<select id='searchTaggedLogs' resultType='com.tworaveler.tlog.log.LogVO'>
@@ -312,7 +308,6 @@
         </when>
         </choose>
 		ORDER BY 	tNum DESC
-		LIMIT 		#{param5}, #{param6}
 	</select>
 	<!-- 좋아요 누른 일기리스트 -->
 	<select id='searchLikedLogs' resultType='com.tworaveler.tlog.log.LogVO'>
@@ -346,7 +341,6 @@
         </when>
         </choose>
 		ORDER BY 	tNum DESC
-		LIMIT 		#{param5}, #{param6}
 	</select>
 	<!-- ===================== 글쓰기 ================================================================================ -->
 	<!-- travelLog 등록 -->

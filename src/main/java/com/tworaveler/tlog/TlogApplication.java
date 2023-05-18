@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,10 +20,16 @@ public class TlogApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TlogApplication.class, args);
 	}
-	public static void profileImgUpload(MemberVO vo, HttpServletRequest request) {
+	private static String uploadPath;
 
-		String profilePath = "/upload/user/";
-		String path = request.getSession().getServletContext().getRealPath(profilePath);
+	public TlogApplication(@Value("${spring.servlet.multipart.location}") String uploadPath){
+		this.uploadPath = uploadPath;
+	}
+
+	public static void profileImgUpload(MemberVO vo, HttpServletRequest request) {
+		String profilePath = uploadPath+"user/";
+		System.out.println("프로필사진 업로드 위치"+profilePath);
+		String path = profilePath;
 		MultipartFile file = ((MultipartRequest) request).getFile("profileImgs");
 		if(!file.getOriginalFilename().equals("")) {
 			String orgFileName = file.getOriginalFilename();
@@ -40,7 +47,7 @@ public class TlogApplication {
 				e.printStackTrace();
 			}
 			
-			vo.setProfileImg(profilePath+orgFileName);
+			vo.setProfileImg("/upload/user/"+orgFileName);
 		}
 	}
 	

@@ -28,24 +28,38 @@ function LikeDown(tNum){
 }
 
 //글 삭제~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function logDel(tNum){
-	if(confirm('글을 삭제하시겠습니까?')){
-		var param2 = {"tNum" : tNum};
-		console.log(param2);
-	   	$.ajax({
-	      url:'/logShare/logDel',
-	      data:param2,
-	      type:'GET',
-	      success:function(userNum){
-				alert('글이 삭제되었습니다.');
-	    	  	location.href='/member/profile?userNum='+userNum;
-	      }
-	   	})
-   }
+function logDel(tNum,writerNum){
+    if(sessionStorage.getItem("userNum")!=null){
+        if(confirm('글을 삭제하시겠습니까?')){
+            if(sessionStorage.getItem("userNum")!= writerNum){
+                var param2 = {"tNum" : tNum, "writerNum" : writerNum};
+                console.log(param2);
+                $.ajax({
+                    url:'/logShare/logDel',
+                    data: param2,
+                    type:'GET',
+                    success:function(userNum){
+                        alert('글이 삭제되었습니다.');
+                        location.href='/member/profile?userNum='+userNum;
+                    }
+                })
+            }else{
+                alert("회원님의 게시글이 아닙니다!");
+            }
+        }
+    }else{
+        alert("로그인 후 해당 기능을 이용하세요!");
+    }
 }
 //글 수정~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function logEdit(tNum){
-	if(confirm('글을 수정하시겠습니까?')){
-		location.href='/logShare/logEdit?tNum='+tNum;
-   }
+function logEdit(tNum,writerNum){
+    if(sessionStorage.getItem("userNum")!=null){
+        if(confirm('글을 수정하시겠습니까?')){
+            if(sessionStorage.getItem("userNum")!= writerNum){
+                location.href='/logShare/logEdit?tNum='+tNum+"&writerNum="+writerNum;
+            }else{
+                alert("회원님의 게시글이 아닙니다!");
+            }
+        }
+    }
 }

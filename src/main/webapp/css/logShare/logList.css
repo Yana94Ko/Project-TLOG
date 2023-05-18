@@ -81,10 +81,21 @@
 .log_ul li{
 	height:35px;
 	line-height:35px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .log_ul li:first-child{
 	height:100%;
 	line-height:40px;
+}
+.log_ul li:nth-child(2){
+	height:100% !important;
+	line-height:40px!important;
+	text-align:center;
+	padding:0px 30px;
+	cursor:pointer;
+	width:12vw;
 }
 .coverImg{
 	width:14vw;
@@ -92,6 +103,7 @@
 	margin-bottom:1vw;
 	border-radius:10px;
 	box-shadow:0 0 10px rgba(0,0,0,30%);
+	object-fit: cover;
 }
 .profileInfo{
 	height:40px;
@@ -103,6 +115,7 @@
 .logProfileImg{
 	width:40px;
 	height:40px;
+	border-radius:50%;
 }
 .logLike{
 	float:right;
@@ -116,4 +129,101 @@
 	background-color:var(--theme-lightblue-30);
 	padding:3px 5px;
 	border-radius:10px;
+}
+
+/*=============== TAG LIST ===============*/
+.tag_wrap{
+	width: 100%;
+	/*background-color: #959595;*/
+	margin-bottom: 75px;
+}
+
+.tag_wrap .txt_title{
+	padding-top: 50px;
+}
+
+.tag_list{
+	margin: 50px auto 0;
+	width: 100%;
+	text-align: center;
+}
+
+.tag_item, .tag_item_end{
+	float: left;
+	width: 10vw;
+	height:10vw;
+	border: 1px solid #eee;
+	font-size: 14px;
+	line-height: 18px;
+	background-color: white;
+}
+
+.tag_item>p{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/* ===== 게시글 없을시 띄워줄 태그 색상 ===== */
+#tag1:hover, #tag2:hover{
+	border-color: rgb(42, 76, 211, 70%);
+	color: white;
+	background-color: rgb(42, 76, 211, 70%);
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
+}
+
+#tag3:hover, #tag4:hover, #tag5:hover, #tag6:hover, #tag7:hover{
+	border-color: rgba(122, 140, 226, 80%);
+	color: white;
+	background-color: rgba(122, 140, 226, 80%);
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
+}
+
+#tag3:hover, #tag4:hover, #tag5:hover, #tag6:hover, #tag7:hover{
+	border-color: rgba(122, 140, 226, 80%);
+	color: white;
+	background-color: rgba(122, 140, 226, 80%);
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
+}
+
+#tag8:hover, #tag9:hover, #tag10:hover, #tag11:hover, #tag12:hover, #tag13:hover, #tag14:hover{
+	border-color: rgba(122, 140, 226, 30%);
+	color: white;
+	background-color: rgba(122, 140, 226, 30%);
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
+}
+
+#tag15:hover, #tag16:hover, #tag17:hover, #tag18:hover, #tag19:hover, #tag20:hover{
+	border-color: #C3E2DD;
+	color: white;
+	background-color: #C3E2DD;
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
+}
+
+#tag21:hover, #tag22:hover, #tag23:hover, #tag24:hover, #tag25:hover{
+	border-color: #FEF5D4;
+	color: white;
+	background-color: #FEF5D4;
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
+}
+
+#tag26:hover, #tag27:hover, #tag28:hover, #tag29:hover{
+	border-color: #EACACB;
+	color: white;
+	background-color: #EACACB;
+	text-decoration: none;
+	z-index: 2;
+	font-weight : bold;
 }

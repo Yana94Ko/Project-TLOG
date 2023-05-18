@@ -44,12 +44,14 @@ public class MemberController {
 	// 로그인 	
 	@GetMapping("/member/login")
 	public String loginForm() {
+		System.out.println("로그인하러옴");
 		return "member/login";
 	}
 	
 	//카카오 로그인
 	@GetMapping("/member/kakaoLogin")
 	public String kakaologin(HttpServletResponse response, String code, HttpSession session, HttpServletResponse res, RedirectAttributes redirect, HttpServletRequest request) throws IOException { // 로그인 토큰 받아오기
+		System.out.println("카카오로그인");
 		JSONObject tokenJson = kakao.getToken(code);
 		String accessToken = tokenJson.getString("access_token");
 		String refreshToken = tokenJson.getString("refresh_token");
@@ -273,7 +275,7 @@ public class MemberController {
 	public ModelAndView userEditOk(MemberVO vo, HttpSession session,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		MemberVO userInfo = (MemberVO) session.getAttribute("userInfo");
-		System.out.println(vo.getProfileImg()+"ddddd");
+		System.out.println(vo.getProfileImg()+"변경 전 프로필사진");
 		if(vo.getProfileImg()=="/img/profile/default_profile.png") {
 			vo.setProfileImg("/img/profile/default_profile.png");
 			System.out.println(vo.getProfileImg());

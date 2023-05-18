@@ -3,32 +3,30 @@
 	clear:both;
 	font-family: 'NanumSquare';
 	width:50vw;
-	height:70vh;
+	height:40vw;
 	position:absolute;
 	top: 50%;
  	left: 50%;
  	transform: translate(-50%, -50%);
  	border-radius:25px;
  	box-shadow:0 0 30px rgba(122, 140, 226, 60%);
+	display: inline-flex;
 }
 /*=====로고 영역=========*/
 #logoContainer{
 	width:50%;
 	height:100%;
-	float:left;
 	border-top-left-radius:25px;
 	border-bottom-left-radius:25px;
 	position:relative;
 }
 #logo{
-	width:200px;
-	height:200px;
-	display:block;
+	width:10vw;
+	height: 10vw;
+	align-items : center;
+	margin-top: 15vw;
+	margin-left: 7.5vw;
 	position:absolute;
-	top:50%;
-	left:50%;
-	margin-top:-100px;
-	margin-left:-100px;	
 	transition:0.3s;
 	border-radius:60%;
 }
@@ -40,7 +38,6 @@
 #loginInfoContainer{
 	width:50%;
 	height:100%;
-	display:inline-block;
 	text-align:center;
 	border-top-right-radius:25px;
 	border-bottom-right-radius:25px;
@@ -52,7 +49,7 @@
 	font-size:2.5em;
 	font-weight:900;
 	letter-spacing:5px;
-	margin: 95px 0px;
+	margin: 6.25vw 0px;
 	color:rgb(42, 76, 211);
 }
 #loginFrm ul{
@@ -60,14 +57,12 @@
 	list-style-type:none;
 }
 .otherLogin img{
- 	width:300px; 
- 	height:50px;
+ 	width:80%;
  	margin:20px 0px;
  	border-radius:10px;
  	box-shadow:0 0 20px rgba(122, 140, 226, 60%);
  	transition:0.3s;
 }
 .otherLogin img:hover{
-	width:310px; 
- 	height:55px;
+	width:90%;
 }

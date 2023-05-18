@@ -6,27 +6,27 @@ import com.tworaveler.tlog.log.LogVO;
 import com.tworaveler.tlog.member.MemberVO;
 
 public interface HomeService {
-	// ¸ÞÀÎ: ÃÖ½Å ±Û ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½: ï¿½Ö½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<LogVO> selectLikeLog();
 
-	// ¸ÞÀÎ: ÆÈ·ÎÀ× ±Û ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½: ï¿½È·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<LogVO> selectFollowLog(int userNum);
 
-	// tNumÀÇ ÅÂ±× ¸®½ºÆ®
+	// tNumï¿½ï¿½ ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<String> selectLogTag(int tNum);
 
-	// tNumÀÇ ±Û³»¿ë ¸®½ºÆ®
+	// tNumï¿½ï¿½ ï¿½Û³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<LogVO> selectLogDetail(int tNum);
 
-	// tNumÀÇ ÅÂ±×µÈ À¯Àú ¸®½ºÆ®
+	// tNumï¿½ï¿½ ï¿½Â±×µï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<LogVO> selectTagUsers(int tNum);
 
-	// tNumÀÇ ÅÂ±× ¸®½ºÆ®
+	// tNumï¿½ï¿½ ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<String> selectTagAll();
 
-	// ¸ÞÀÎ) ÆÈ·Î¿ö ¸¹Àº À¯Àú
+	// ï¿½ï¿½ï¿½ï¿½) ï¿½È·Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public List<MemberVO> FollowedUser();
 
-	// userNumÀÇ ÅÂ±× ¸®½ºÆ®
+	// userNumï¿½ï¿½ ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<String> selectmyTag(int userNum);
 }

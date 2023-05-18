@@ -8,9 +8,9 @@ spring:
   
   datasource: # Mybatis dataSource DB 연결
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database-1.ccibfzyyg2bg.us-west-1.rds.amazonaws.com/tLogDB?characterEncoding=utf-8
-    username: admin
-    password: tlogadmin
+    url: jdbc:mysql://yana-tlogdb.cwphiqxgn2ap.us-west-2.rds.amazonaws.com/tLogDB?characterEncoding=utf-8
+    username: tLogAdmin
+    password: tlog220609
   
   devtools: # 서버 자동 시작
     livereload:
@@ -18,12 +18,14 @@ spring:
  
   servlet: # multipart 설정
     multipart:
+      location: /var/lib/apache-tomcat-8.5.86/webapps/upload/ #이미지파일 업로드 경로 외부로
       enabled: true
       max-file-size: 20MB
-      
+
 mybatis: 
   #mybatis에서 팩키지 생략 할 수 있도록 설정
   type-aliases-package: com.tworaveler.tlog
   mapper-locations: mapper/*Mapper.xml
+
 
   

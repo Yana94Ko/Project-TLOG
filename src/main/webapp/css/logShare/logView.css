@@ -120,10 +120,12 @@
 .logProfileImg{
 	width:40px;
 	height:40px;
+	border-radius:50%;
 }
 .tagProfileImg{
 	width:20px;
 	height:20px;
+	border-radius:50%;
 }
 .logLike{
 	float:right;

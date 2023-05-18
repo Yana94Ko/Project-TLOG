@@ -14,7 +14,7 @@
 	<div class="carousel-inner">
 		<div class="carousel-item active">
 			<img src='/upload/log/${vo.coverImg}' class='imgs'/>
-			<div class="carousel-caption">			
+			<div class="carousel-caption">
 			<ul>
 				<li>
 					<div id='titleDiv'>
@@ -55,18 +55,19 @@
 								${t.tagName}
 							</span>&nbsp;
 					</c:forEach>
-				</li>		
-				<!-- <c:if test="${logNum==vo.userNum}"></c:if>-->
-				<li class="del_edit_btn">
-					<span class='tags' onclick='logEdit(${vo.tNum})'>수정</span>
-					<span class='tags' onclick='logDel(${vo.tNum})'>삭제</span>
 				</li>
+				<c:if test="${sessionStorage.getItem('userNum')==vo.userNum}">
+					<li class="del_edit_btn">
+						<span class='tags' onclick='logEdit(${vo.tNum}, ${vo.userNum})'>수정</span>
+						<span class='tags' onclick='logDel(${vo.tNum}), ${vo.userNum}'>삭제</span>
+					</li>
+				</c:if>
 			</ul>
 			</div>
 	    </div>
     			<c:forEach var='dvo' items='${detailList}'>		
 				    <div class="carousel-item">				
-				      <img src='/upload/log/${dvo.tImg}' class='imgs'/>				
+				      <img src='/upload/log/${dvo.tImg}' class='imgs'/>
 				      <div class="carousel-caption">				
 				        <div id='log_list_div'>
 							<div class='log_div'>

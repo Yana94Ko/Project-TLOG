@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.tworaveler.tlog.member.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +56,7 @@ public class LogShareController {
 	//검색한 로그리스트
 	@ResponseBody // Ajax
 	@RequestMapping(value = "/logShare/searchLists", method = RequestMethod.GET)
-	public List<LogVO> searchLists(@RequestParam(value = "startNum") int startNum,String searchKey, String searchWord, int newOrLike) {
+	public List<LogVO> searchLists(@RequestParam(value = "startNum") int startNum, String searchKey, String searchWord, int newOrLike) {
 		int limitNum = 7;
 		List<LogVO> logLists = new ArrayList<LogVO>();
 		
@@ -72,20 +73,33 @@ public class LogShareController {
 				logLists = service.searchLikeLogs(searchKey, "%" + searchWord + "%", startNum, limitNum);
 			}
 		}
-		
+
+		if(logLists.size()== 0){
+			//비었을 경우 태그리시트 띄워주기 위한 함수
+			List<LogVO> tagList = service.selectTagAll();
+			return tagList;
+		}
 		
 		//vo마다 tNum의 태그리스트 넣기
 		for(LogVO lvo : logLists) {
 			lvo.setTagList(service.selectLogTag(lvo.gettNum()));
 		}
+
 		return logLists;
 	}
-	
+
 	/*======================= LogView ===========================================*/
 	@GetMapping("/logShare/logView") 
 	public ModelAndView logView(HttpSession session, HttpServletRequest request, int tNum) { 
 		ModelAndView mav  = new ModelAndView();
-		int logUser = 2; //로그인 한 유저넘버
+		MemberVO userInfo = (MemberVO) session.getAttribute("userInfo");
+		int logUser;
+		if(userInfo!=null) {
+			logUser = userInfo.getUserNum(); //로그인 한 유저넘버
+			mav.addObject("logStatus", "Y");
+		}else {
+			logUser = 0; //로그인 한 유저넘버
+		}
 		LogVO vo = service.getOneLog(tNum, logUser);		
 		int isTagged = service.isTagged(tNum, logUser);
 		if(vo.getIsPrivate()==1 && isTagged==0 && vo.getUserNum()!=logUser) {//비밀일기일 때 태그된 유저가 아니고 작성자도 아니라면
@@ -105,7 +119,8 @@ public class LogShareController {
 	@ResponseBody // Ajax
 	@RequestMapping(value = "/logShare/likeUp", method = RequestMethod.POST)
 	public LogVO likeUp(@RequestParam("tNum") int tNum, HttpSession session) {
-		int logNum = 2; //logNum
+		MemberVO userInfo = (MemberVO) session.getAttribute("userInfo");
+		int logNum = userInfo.getUserNum(); //logNum
 		System.out.println(logNum+"+"+tNum);
 		service.LikeUp(logNum, tNum);
 		
@@ -115,7 +130,8 @@ public class LogShareController {
 	@ResponseBody // Ajax
 	@RequestMapping(value = "/logShare/likeDown", method = RequestMethod.GET)
 	public LogVO likeDown(@RequestParam("tNum") int tNum, HttpSession session) {
-		int logNum = 2; //logNum
+		MemberVO userInfo = (MemberVO) session.getAttribute("userInfo");
+		int logNum = userInfo.getUserNum(); //logNum
 		System.out.println(logNum+"+"+tNum);
 		service.LikeDown(logNum, tNum);
 

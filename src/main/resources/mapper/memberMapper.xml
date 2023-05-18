@@ -43,32 +43,32 @@
 		WHERE		userNum = #{param1}
 	</select>
 	<insert id="setFollow">
-		insert 		into followUser (userNum, followingNum)
+		insert 		into followUser (followingNum, userNum )
 		values		(#{param1}, #{param2})
 	</insert>
 	<delete id="unfollow">
 		DELETE 		from followUser
-		WHERE		userNum = #{param1}
-		AND			followingNum = #{param2}
+		WHERE		userNum = #{param2}
+		AND			followingNum = #{param1}
 	</delete>
 	<select id="isFollowed" resultType='int'>
 		SELECT		COUNT(*)
 		FROM		followUser
-		WHERE		userNum = #{param1}
-		AND			followingNum = #{param2}
+		WHERE		userNum = #{param2}
+		AND			followingNum = #{param1}
 	</select>
 	<select id='setFollowerInfo' resultType='com.tworaveler.tlog.member.MemberVO'>
 		SELECT 		A.*
 		FROM		followUser B
 	    JOIN		user A
-	    ON 			B.followingNum = A.userNum
-	    WHERE		B.userNum = #{param1}
+	    ON 			B.userNum = A.userNum
+	    WHERE		B.followingNum = #{param1}
 	</select>
 	<select id='setFollowInfo' resultType='com.tworaveler.tlog.member.MemberVO'>
 		SELECT 		A.*
 		FROM		user A
 	    JOIN		followUser B
-	    ON 			B.userNum = A.userNum
-	    WHERE		B.followingNum = #{param1}
+	    ON 			B.followingNum = A.userNum
+	    WHERE		B.userNum = #{param1}
 	</select>
 </mapper>

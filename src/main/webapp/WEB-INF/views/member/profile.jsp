@@ -73,10 +73,12 @@
       <div class="modal-body">
 	      <ul id="followerList">
 	      	<c:forEach var="vo" items="${followerList }">
-		      	<li>
-			      	<span ><img src="${vo.profileImg}" id="followerImg"></span>&emsp;
-					<span id="followerNick">${vo.userNick }</span>
-		      	</li>
+				<a href="/member/profile?userNum=${vo.userNum}">
+					<li>
+						<span ><img src="${vo.profileImg}" id="followerImg"></span>&emsp;
+						<span id="followerNick">${vo.userNick }</span>
+					</li>
+				</a>
 	      	</c:forEach>
 	      </ul>
       </div>
@@ -102,10 +104,12 @@
       <div class="modal-body">
           <ul id="followerList">
               <c:forEach var="vo" items="${followList}">
-                  <li>
-                      <span ><img src="${vo.profileImg}" id="followImg"></span>&emsp;
-                    <span id="followNick">${vo.userNick }</span>
-                  </li>
+				  <a href="/member/profile?userNum=${vo.userNum}">
+					  <li>
+						  <span ><img src="${vo.profileImg}" id="followImg"></span>&emsp;
+						<span id="followNick">${vo.userNick }</span>
+					  </li>
+				  </a>
            </c:forEach>
           </ul>
       </div>

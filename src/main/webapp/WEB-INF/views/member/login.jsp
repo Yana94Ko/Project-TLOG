@@ -7,15 +7,15 @@
 	<div class="container">
 		<div id="loginContainer">
 			<div id="logoContainer">
-				<a href="/"><img src="/img/logo.png" id="logo"></a>
+				<a href="/"><img width="100%" src="/img/logo.png" id="logo"></a>
 			</div>
 			<div id="loginInfoContainer">
 				<p id="loginTitle">로그인</p>
 				<div class="otherLogin">
-					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=a7b1e2d31b1e4b9b211d09f5dcd83a80&redirect_uri=http://localhost:8025/member/kakaoLogin"><img class="kakao-login-img" src="/img/member/kakao_login.png" id="kakaoLogo"></a>
+					<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=a7b1e2d31b1e4b9b211d09f5dcd83a80&redirect_uri=http://t-log.pe.kr/member/kakaoLogin"><img class="kakao-login-img" src="/img/member/kakao_login.png" id="kakaoLogo"></a>
 				</div>
 				<div class="otherLogin">
-					<a href="#"><img src="/img/member/google_login.png"></a>
+					<a href="#" onClick="alert('준비중인 기능입니다!조금만 기다려주세요 >_<')"><img width="100%" src="/img/member/google_login.png"></a>
 				</div>
 			</div>
 		</div>

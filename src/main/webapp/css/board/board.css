@@ -78,6 +78,7 @@
 #profileImg{
 	width:2vw;
 	height:2vw;
+	border-radius:50%;
 }
 #loading{
 	padding-left:15vw;
@@ -114,11 +115,11 @@
 }
 /*=========광고 슬라이드========== */
 .slideshow-container {
-	width:9vw;
+	width:7vw;
 	height:24vw;
 	max-width: 1440px;
 	margin: auto;
-	margin-top: 120px;
+	margin-top: 60vw;
 	position:fixed;
 	right:10vw;
 	top:10vw;

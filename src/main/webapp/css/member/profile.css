@@ -1,6 +1,7 @@
 @charset "UTF-8";
 #profileContainer{
 	width:60vw;
+	min-height: 42vw;
 	position:relative;
 	margin:0 auto;
 	box-shadow:rgba(0,0,0,60%);
@@ -83,6 +84,7 @@
 #followerImg, #followImg{
 	width:40px;
 	height:40px;
+	border-radius:50%;
 }
 .followerBtn{
 	background-color:rgba(122, 140, 226, 60%);
@@ -128,17 +130,21 @@
 .log_ul li{
 	height:35px;
 	line-height:35px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .log_ul li:first-child{
 	height:100%;
 	line-height:40px;
 }
 .coverImg{
-	max-width:14vw;
-	max-height:12vw;
+	width: 14vw;
+	height: 12vw;
 	margin-bottom:1vw;
 	border-radius:10px;
 	box-shadow:0 0 10px rgba(0,0,0,30%);
+	object-fit: cover;
 }
 .profileInfo{
 	height:40px;
@@ -150,6 +156,7 @@
 .logProfileImg{
 	width:40px;
 	height:40px;
+	border-radius:50%;
 }
 .logLike{
 	float:right;

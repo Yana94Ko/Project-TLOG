@@ -37,7 +37,3 @@ dependencies {
 	implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 	//------------ 추가한 의존성 END --------->
 }
-
-tasks.named('test') {
-	useJUnitPlatform()
-}

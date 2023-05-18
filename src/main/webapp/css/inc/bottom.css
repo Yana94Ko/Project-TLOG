@@ -7,6 +7,8 @@
 	position:relative;
 	padding:0 !important;
 	float:left;
+    margin-top: 70px;
+    white-space : nowrap;
 }
 #footerLogo{
     float:left;

@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,8 @@ import com.tworaveler.tlog.member.MemberVO;
 public class LogWriteController {
 	@Inject
 	LogService service;
+	@Value("${spring.servlet.multipart.location}")
+	private String uploadPath;
 
 	/* ===================== 글쓰기폼 ======================== */
 	@GetMapping("/logShare/logWrite")
@@ -53,8 +56,8 @@ public class LogWriteController {
 		List<String> fileNames = new ArrayList<String>();//ajax로 보낼 변환된 파일명
 		
 		//파일 업로드
-		String path = request.getSession().getServletContext().getRealPath("/upload/log");
-	    System.out.println("실제 경로 = "+path);
+		String path = uploadPath +"log/";
+	    //System.out.println("실제 경로 = "+path);
 		try {
 			MultipartHttpServletRequest mr = (MultipartHttpServletRequest)request;
 
@@ -82,17 +85,20 @@ public class LogWriteController {
 						ee.printStackTrace();
 					}
 				}
-		    	
+
 				//DB UPDATE
 				service.logWriteOk(vo); // travelLog 테이블
 				int tNum =service.getTNum(vo.getUserNum());//방금 넣은 tNum가져오기
 				vo.settNum(tNum); 
-				System.out.println(vo.getTagNumList());
-				System.out.println(vo.getUserNumList());
-				
-				System.out.println("insertTagList="+service.insertTagList(vo));
-				System.out.println("insertUserList="+service.insertUserList(vo));
-				
+//				vo.getTagNumList();
+//				vo.getUserNumList();
+				if(vo.getTagNumList()!=null){
+					service.insertTagList(vo);
+				}
+				if(vo.getUserNumList()!=null){
+					service.insertUserList(vo);
+				}
+
 				System.out.println("글쓰기 완료");
 			}
 		}catch(Exception e) {
