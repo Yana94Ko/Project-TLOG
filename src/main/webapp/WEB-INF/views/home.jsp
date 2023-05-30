@@ -470,6 +470,7 @@
                 </c:if>
             </c:forEach>
         </div>
+    </div>
     <div class="wrap_btn">
         <!-- <i class="fa-solid fa-chevron-left" style="font-size: 100px; "></i>
                 <a href="/"><i class="fa-solid fa-chevron-right" style="font-size: 50px; color:white;"></i></a>-->
